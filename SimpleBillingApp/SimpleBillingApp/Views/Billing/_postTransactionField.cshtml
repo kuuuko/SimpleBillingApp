@@ -1,0 +1,46 @@
+﻿@model SimpleBillingApp.Models.ViewModels.TransactionViewModel
+
+@using (Ajax.BeginForm("PostTransaction", "Billing", new AjaxOptions { OnSuccess = "refreshTransactionField" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+   
+
+    <table class="postArea">
+        <tr>
+            <th class="fieldNarrow">Article</th>
+            <th class="fieldNarrow">Price</th>
+            <th class="fieldNarrow">Quantity</th>
+            <th class="fieldNarrow">Total</th>
+        </tr>
+        <tr>
+            <td class="fieldNarrow">
+                <div>
+                    <select id="selectArticle" name="viewArticleId">
+                        @foreach (var article in (List<SimpleBillingApp.Models.Article>)ViewData["Articles"])
+                        { 
+                            <option value=@article.articleId price=@article.articlePrice >@article.articleName</option>
+                        }
+                    </select>
+                </div>
+            </td>
+            <td class="fieldNarrow">
+                <div id="priceField"></div>
+            </td>
+            <td class="fieldNarrow">
+                <input class="text-box single-line valid" data-val="true" data-val-range="Not Acceptable" data-val-range-max="100" data-val-range-min="1" data-val-number="Must be a number." data-val-required="required." id="quantity" name="quantity" type="number" value="0" style="width: 50px; padding-left: 20px">
+                @Html.ValidationMessageFor(model => model.quantity)
+            </td>
+            <td class="fieldNarrow">
+                <div id="subtotalField"></div>
+            </td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" value="Post" />
+    </p>   
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

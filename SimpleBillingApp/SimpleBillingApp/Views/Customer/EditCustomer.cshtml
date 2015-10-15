@@ -1,0 +1,59 @@
+﻿@model SimpleBillingApp.Models.Customer
+
+@{
+    ViewBag.Title = "EditCustomer";
+}
+<p>
+    
+    <h2>EditCustomer</h2>
+    
+</p>
+@using (Html.BeginForm("EditCustomer","Customer"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Customer</legend>
+
+        @Html.HiddenFor(model => model.customerId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.customerName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.customerName)
+            @Html.ValidationMessageFor(model => model.customerName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.customerAdress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.customerAdress)
+            @Html.ValidationMessageFor(model => model.customerAdress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.customerContact)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.customerContact)
+            @Html.ValidationMessageFor(model => model.customerContact)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+            <button onclick="location.href='@Url.Action("DeleteCustomer", "Customer", new { customerId = Model.customerId })';return false;">Delete Customer</button>
+        </p>
+
+    </fieldset>
+}
+<hr>
+<div>
+    <button onclick="location.href='@Url.Action("CustomerDetails", "Customer", new { customerId = Model.customerId })';return false;">Back to List</button>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

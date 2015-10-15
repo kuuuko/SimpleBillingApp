@@ -1,0 +1,16 @@
+﻿
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true)
+<h2>New Invoice</h2>
+<div>
+    @Html.Action("PostTransactionField", "Billing")
+</div>
+<hr>
+<div id="postField" >
+    @Html.Action("CurrentTransactions", "Billing")
+</div>
+<hr>
+<div>
+    <button onclick="location.href='@Url.Action("CustomerDetails", "Customer", new { customerId = ViewData["customerId"] })';return false;">Back to list</button>
+    <button onclick="location.href='@Url.Action("SaveInvoice", "Billing", new { customerId = ViewData["customerId"] })';return false;">Save</button>
+</div>

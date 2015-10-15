@@ -1,0 +1,61 @@
+﻿
+.postArea {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 100px;
+    padding-right: 20px;
+    border: 1px solid black;
+}
+
+.fieldWide {
+    width: 100px;
+    max-width: 300px;
+    height: 20px;
+    max-height: 20px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+}
+
+.fieldNarrow {
+    width: 50px;
+    max-width: 300px;
+    height: 20px;
+    max-height: 20px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+}
+
+.currentArea {
+    background-color: #d3dce0;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border: 1px solid black;
+}
+
+.mainArea {
+    background-color: ivory;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border: 2px solid blue;
+}
+
+.presentArea {
+    background-color: white;
+}
+
+.thick {
+    height: 50px;
+    max-height: 50px;
+}
+
+.high {
+    padding-bottom: 50px;
+}
+
+.left {
+    float: left;
+}

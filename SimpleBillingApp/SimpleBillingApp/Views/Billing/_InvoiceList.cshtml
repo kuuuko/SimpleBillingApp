@@ -1,0 +1,24 @@
+﻿@model IEnumerable<SimpleBillingApp.Models.ViewModels.InvoiceViewModel>
+<h2>Invoice List:</h2>
+
+<table>
+    @foreach (var invoice in Model)
+    {
+        <tr class="presentArea">
+            <td>
+                <p>
+                    @Html.ActionLink("invoice: " + String.Format("{0:0000000000}", invoice.viewInvoiceId) +
+                                        "    /     issued on: " + invoice.viewInvoiceDate + " "
+                                        , "InvoiceDetails"
+                                        , "Billing"
+                                        , new { invoiceId = invoice.viewInvoiceId }
+                                        , null
+                                    )
+                </p>
+            </td>
+            <td>
+                    @Html.ActionLink("Delete", "DeleteInvoice", "Billing", new { invoiceId = invoice.viewInvoiceId }, null)
+            </td>
+        </tr>
+    }
+</table>

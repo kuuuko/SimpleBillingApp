@@ -1,0 +1,13 @@
+﻿@{ 
+    ViewBag.Title = "Home";
+}
+
+<h2>List of our customers:</h2>
+<hr>
+<div>
+    @Html.Action("CustomerList", "Customer")
+</div>
+<hr>
+<p>
+    <button onclick="location.href='@Url.Action("AddCustomer", "Customer")';return false;">Add new Customer</button>
+</p>

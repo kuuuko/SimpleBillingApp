@@ -1,0 +1,29 @@
+﻿@model SimpleBillingApp.Models.Article
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Article</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.articleName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.articleName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.articlePrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.articlePrice)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.articleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,36 @@
+﻿@model SimpleBillingApp.Models.ViewModels.CustomerViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Customer Details</h2>
+
+<fieldset>
+    <legend>Customer</legend>
+    <p>
+        @Html.DisplayNameFor(model => model.viewCustomerName):
+        @Html.DisplayFor(model => model.viewCustomerName)
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.viewCustomerAdress):
+        @Html.DisplayFor(model => model.viewCustomerAdress)
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.viewCustomerContact):
+        @Html.DisplayFor(model => model.viewCustomerContact)
+    </p>
+</fieldset>
+<p>
+    <button onclick="location.href='@Url.Action("EditCustomer", "Customer", new { customerId = Model.viewCustomerId })';return false;">Edit/Delete Customer</button>
+    <button onclick="location.href='@Url.Action("AddInvoice", "Billing", new { customerId = Model.viewCustomerId })';return false;">Add new Invoice</button>
+</p>
+<hr>
+<div>
+    @Html.Action("InvoiceList", "Billing")
+</div>
+<hr>
+<div>
+    <button onclick="location.href='@Url.Action("Index", "Home")';return false;">Back to Customers</button>
+</div>
+

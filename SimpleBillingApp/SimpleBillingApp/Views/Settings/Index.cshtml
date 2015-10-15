@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SimpleBillingApp.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Articles</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.articleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.articlePrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr style="background-color:white;border-top-width: 5px;border-right-width: 5px;border: 2px solid blue;">
+        <td>
+            <div style="width:200px;max-width:300px;height:60px;max-height:20px;padding-top: 10px;padding-left: 20px;padding-bottom: 10px;padding-right: 20px;">
+                @Html.DisplayFor(modelItem => item.articleName)
+            </div>
+        </td>
+        <td>
+            <div style="width:200px;max-width:300px;height:60px;max-height:20px;padding-top: 10px;padding-left: 20px;padding-bottom: 10px;padding-right: 20px;">
+                @Html.DisplayFor(modelItem => item.articlePrice)
+            </div>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.articleId }) |     
+            @Html.ActionLink("Details", "Details", new { id=item.articleId }) 
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.articleId })         Not jet implemented*@     
+        </td>
+    </tr>
+}
+
+</table>

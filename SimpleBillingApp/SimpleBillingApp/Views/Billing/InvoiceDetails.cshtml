@@ -1,0 +1,44 @@
+﻿@model SimpleBillingApp.Models.ViewModels.InvoiceViewModel
+
+@{
+    ViewBag.Title = "Invoice Details";
+}
+
+<h2>Invoice Details</h2>
+
+<hr>
+
+<fieldset>
+    <legend>Invoice</legend>
+    <p>
+        @Html.DisplayNameFor(model => model.viewInvoiceId):
+        @Html.DisplayFor(model => model.viewInvoiceId)
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.viewCustomerName):
+        @Html.DisplayFor(model => model.viewCustomerName)
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.viewCustomerAdress):
+        @Html.DisplayFor(model => model.viewCustomerAdress)
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.viewCustomerContact):
+        @Html.DisplayFor(model => model.viewCustomerContact)
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.viewInvoiceDate):
+        @Html.DisplayFor(model => model.viewInvoiceDate)
+    </p>
+    
+</fieldset>
+<hr>
+<div>
+    @Html.Action("InvoiceTransactions", "Billing")
+</div>
+<hr>
+<p>
+    <button onclick="location.href='@Url.Action("CustomerDetails", "Customer", new { customerId = ViewData["customerId"] })';return false;">Back to list</button>
+</p>
+
+    

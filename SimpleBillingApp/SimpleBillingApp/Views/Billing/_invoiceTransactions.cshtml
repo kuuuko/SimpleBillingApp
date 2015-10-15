@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SimpleBillingApp.Models.ViewModels.TransactionViewModel>
+
+@{
+    decimal Total = 0;   
+ }    
+<table>
+    <tr >
+        <th class="fieldWide">
+            Transaction 
+        </th>
+        <th class="fieldWide">
+            Article 
+        </th>
+        <th class="fieldWide">
+            Price
+        </th>
+        <th class="fieldWide">
+            Quantity
+        </th>
+        <th class="fieldWide">
+            Total
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) 
+{ 
+    
+        var subTotal = item.quantity * item.viewPrice;
+    Total += subTotal;
+    
+    <tr class="presentArea">
+        <td>
+            <div class="fieldNarrow">
+                @Html.DisplayFor( itemModel => item.viewTransactionId)
+            </div>
+        </td>
+        <td>
+            <div class="fieldNarrow">
+                @Html.DisplayFor( itemModel => item.viewArticleName )
+            </div>
+        </td>
+        <td>
+            <div class="fieldNarrow">
+                @Html.DisplayFor( itemModel => item.viewPrice )
+            </div>
+        </td>
+        <td>
+            <div class="fieldNarrow">
+                @Html.DisplayFor( itemModel => item.quantity )
+            </div>
+        </td>
+        <td>
+            <div class="fieldNarrow">
+                @subTotal
+            </div>
+        </td>
+    </tr>
+}
+    <tr class="presentArea">
+        <td></td><td></td><td></td><td></td><td><hr></td>
+    </tr>
+    <tr class="presentArea">
+        <td></td><td></td><td></td><td></td>
+        <td>
+            <p> Total: @Total </p>
+        </td>
+    </tr>
+</table>
+
+

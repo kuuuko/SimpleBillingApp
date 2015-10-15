@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SimpleBillingApp.Models.ViewModels.TransactionViewModel>
+
+@{
+    decimal Total = 0;   
+ }    
+
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true)
+
+<table>
+    <tr >
+        <th class="fieldWide">
+            Article 
+        </th>
+        <th class="fieldWide">
+            Price
+        </th>
+        <th class="fieldWide">
+            Quantity
+        </th>
+        <th class="fieldWide">
+            Total
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    
+    var subTotal = item.quantity * item.viewPrice;
+    Total += subTotal;
+    
+    <tr class="currentArea">
+        <td>
+            <div class="fieldWide">
+                @Html.DisplayFor( itemModel => item.viewArticleName )
+            </div>
+        </td>
+        <td>
+            <div class="fieldWide">
+                @Html.DisplayFor( itemModel => item.viewPrice )
+            </div>
+        </td>
+        <td>
+            <div class="fieldWide">
+                @Html.DisplayFor( itemModel => item.quantity )
+            </div>
+        </td>
+        <td>
+            <div class="fieldWide">
+                @subTotal
+            </div>
+        </td>
+        <td>
+            @Ajax.ActionLink("Remove", "RemoveCurrentTransaction", new { viewTransactionId = item.viewTransactionId }, new AjaxOptions { OnSuccess = "refreshTransactionField" })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<p><h2>  Total: @Total </h2></p>

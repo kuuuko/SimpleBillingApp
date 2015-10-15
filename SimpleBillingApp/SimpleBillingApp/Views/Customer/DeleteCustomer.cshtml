@@ -1,0 +1,26 @@
+﻿@model SimpleBillingApp.Models.Customer
+
+@{
+    ViewBag.Title = "DeleteCustomer";
+}
+
+<h2>DeleteCustomer</h2>
+
+<h3>Are you sure you want to delete Customer?</h3>
+<fieldset>
+    <legend>Customer</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.customerName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.customerName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

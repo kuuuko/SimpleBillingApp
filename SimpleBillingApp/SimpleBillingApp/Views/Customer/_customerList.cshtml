@@ -1,0 +1,16 @@
+﻿@model IEnumerable<SimpleBillingApp.Models.ViewModels.CustomerViewModel>
+
+<table>
+    @foreach (var customer in Model)
+    {
+        <tr class="presentArea">
+            <td>
+                <p>
+                    @Html.ActionLink("" + customer.viewCustomerName + "", "CustomerDetails", "Customer", new { customerId = customer.viewCustomerId }, null)
+                </p>
+            </td>
+        </tr>
+    }
+</table>
+
+
